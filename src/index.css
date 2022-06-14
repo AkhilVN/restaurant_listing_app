@@ -1,0 +1,49 @@
+body {
+    padding: 36px 64px;
+    margin: 0;
+  }
+
+  h1,h2,h3,h4,h5,p {
+    font-family: 'Helvetica';
+    margin: 0;
+  }
+
+
+  .dropdown-content {
+    display: none;
+    box-sizing: border-box;
+    padding: 8px;
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  .checked {
+    color: #002B56;
+  }
+  .un-checked {
+    color: #002B56;
+  }
+
+  .starSize {
+      margin-right: 2px;
+      font-size: 19px !important;
+  }
+
+  .loader {
+    border-top: 2px solid #002B56;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    margin: 0 auto;
+    animation: spin 1.5s linear infinite;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
