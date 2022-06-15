@@ -45,3 +45,16 @@ export const Icon = styled.i`
     font-size: 9px !important;
     color: #969696;
 `
+
+export const ClearButtonWrapper = styled.div`
+    margin-left:auto;
+    display: flex;
+    align-items: center;
+`
+export const ClearButton = styled.button`
+    border: 1px solid #002B56;
+    width: 151px;
+    height: 38px;
+    color: #002B56;
+    background-color: #fff;
+`
