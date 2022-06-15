@@ -11,6 +11,9 @@ const RestaurantDetail: FC<TitleProps> = ({  }) => {
     const [reviews, setReviews] = useState(null)
     const id = window.location.href.split('/').reverse()[0]
 
+    const dynamicWidth= window.screen.width
+    const isMobile = dynamicWidth <= 440
+
     useEffect( () => {
       window.scrollTo(0,0);
         getRestaurantDetail();
@@ -28,8 +31,8 @@ const RestaurantDetail: FC<TitleProps> = ({  }) => {
       }
   return (
     <>
-            {restaurants ? <Details restaurantDetail={restaurants}/> : <RestaurantDetailLoader/>}
-            {reviews ? <RestaurantReviews restaurantReviews={reviews}/> : <RestaurantReviewLoader/>}
+            {restaurants ? <Details restaurantDetail={restaurants} isMobile={isMobile}/> : <RestaurantDetailLoader/>}
+            {reviews ? <RestaurantReviews restaurantReviews={reviews} isMobile={isMobile}/> : <RestaurantReviewLoader/>}
 
 
     </>

@@ -1,5 +1,5 @@
 export const ENDPOINTS = {
-    BASEURL: 'https://api.yelp.com/v3/businesses', //`http://localhost:3001`,
+    BASEURL: `http://localhost:3001`,//`https://api.yelp.com/v3/businesses`,
     SEARCH: `businesses/search`,
     DETAIL: `businesses`
 }

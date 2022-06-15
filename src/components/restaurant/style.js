@@ -9,7 +9,7 @@ export const AllRestaurants= styled.h1`
 `;
 
 export const RestaurantWrapper= styled.div`
-    display: grid;
+    display: ${props=>!props.isMobile && 'grid'};
     grid-template-columns: auto auto auto auto;
     gap: 32px;
 `;

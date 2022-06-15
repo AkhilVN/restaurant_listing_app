@@ -7,10 +7,11 @@ const { Seperator } = require('../../commonStyle.js');
 
 
 interface TitleProps {
-    restaurantDetail: any
+    restaurantDetail: any,
+    isMobile: boolean
 }
 
-const Details: FC<TitleProps> = ({ restaurantDetail }) => {
+const Details: FC<TitleProps> = ({ restaurantDetail, isMobile }) => {
     const getLocationThumbnail = (lat: number, lon: number) => {
         const url = `https://maps.googleapis.com/maps/api/staticmap?center=${lat},${lon}&zoom=16&size=640x228&markers=color:blue%7C${lat},${lon}&key=${GOOGLE_MAPS_API_KEY}`
         return url
@@ -18,15 +19,14 @@ const Details: FC<TitleProps> = ({ restaurantDetail }) => {
     const { latitude, longitude } = restaurantDetail.coordinates
     return (
         <>
-            <RestaurantName>{restaurantDetail.name}</RestaurantName>
+            <RestaurantName isMobile={isMobile}>{restaurantDetail.name}</RestaurantName>
             <ShowRating rating={restaurantDetail.rating} />
-            <CategoryPrice restaurant={restaurantDetail} detail={true} />
+            <CategoryPrice restaurant={restaurantDetail} detail={true} isMobile={false}/>
             <Seperator />
-            <MapImageWrapper>
-                <MapWrapper>
-                    <Thumbnail src={getLocationThumbnail(latitude, longitude)} />
+            <MapImageWrapper isMobile={isMobile}>
+                <MapWrapper isMobile={isMobile}>
+                    <Thumbnail src={getLocationThumbnail(latitude, longitude)}/>
                     <Location>{restaurantDetail.location.address1},
-
                         {restaurantDetail.location.city} {restaurantDetail.location.zip_code}</Location>
                 </MapWrapper>
                 <div style={{ display: 'flex', overflowX: 'scroll' }}>

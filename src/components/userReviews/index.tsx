@@ -4,24 +4,47 @@ const { Seperator, FlexWrapper, ProfileIcon, ProfileDetail, Name, Date, ReviewTe
 
 
 interface TitleProps {
-    reviews: any
+    reviews: any,
+    isMobile: boolean
 }
 
-const UserReviews: FC<TitleProps> = ({ reviews }) => {
+const UserReviews: FC<TitleProps> = ({ reviews, isMobile }) => {
+
+    const changeDateFormat = (date: any) => {
+        const dateTime = date.substr(0, 10).split("-");
+
+        const formattedDate = dateTime[2] + "-" + dateTime[1] + "-" + dateTime[0];
+        return formattedDate
+    }
 
     return (
         <>
-            <FlexWrapper>
+            {isMobile ? 
+            <>
+                <FlexWrapper>
+                    <ProfileIcon src={reviews.user.image_url} isMobile={isMobile}/>
+                    <ProfileDetail>
+                        <Name isMobile={isMobile}>{reviews.user.name}</Name>
+                        <Date isMobile={isMobile}>{changeDateFormat(reviews.time_created)}</Date>
+                    </ProfileDetail>
+                </FlexWrapper>
+                <div style={{marginTop:'12px'}}>
+                    <ShowRating rating={reviews.rating}/>
+                    <ReviewText isMobile={isMobile}>{reviews.text}</ReviewText>
+                </div>
+            </>
+            
+            :<FlexWrapper>
                 <ProfileIcon src={reviews.user.image_url} />
                 <ProfileDetail>
                     <Name>{reviews.user.name}</Name>
-                    <Date>{reviews.time_created}</Date>
+                    <Date>{changeDateFormat(reviews.time_created)}</Date>
                 </ProfileDetail>
                 <div>
                     <ShowRating rating={reviews.rating} />
                     <ReviewText>{reviews.text}</ReviewText>
                 </div>
-            </FlexWrapper>
+            </FlexWrapper>}
             <Seperator />
 
 

@@ -21,22 +21,22 @@ export const FlexWrapper = styled.div`
 `
 
 export const ProfileIcon = styled.img`
-    width: 80px;
-    height: 80px;
+    width: ${props=> props.isMobile ? '120px' : '80px'};
+    height: ${props=> props.isMobile ? '120px' : '80px'};
 `
 export const ProfileDetail = styled.div`
     margin-left: 32px;
 `
 
 export const Name = styled.p`
-    font-size: 22px;
+    font-size: ${props=> props.isMobile ? '28px' :'22px'};
     line-height: 24px;
     color: #000000;
     width: 192px;
 `
 
 export const Date = styled.p`
-    font-size: 16px;
+    font-size: ${props=> props.isMobile ? '24px' :'16px'};
     line-height: 24px;
     color: #666666;
     margin-top: 6px;
@@ -44,7 +44,7 @@ export const Date = styled.p`
 `
 
 export const ReviewText = styled.p`
-    font-size: 20px;
+    font-size: ${props=> props.isMobile ? '14px' :'20px'};
     line-height: 28px;
     letter-spacing: 1px;
     color: #000000;

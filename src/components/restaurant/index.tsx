@@ -16,6 +16,9 @@ const Restaurants: FC<TitleProps> = ({openStatus, priceFilter, category }) => {
   const [loading, setLoading] = useState(false)
   const [restaurantLoading, setRestaurantLoading] = useState(false)
 
+  const dynamicWidth= window.screen.width
+  const isMobile = dynamicWidth <= 440
+
   useEffect(() => {
     loadRestaurants();
   }, [openStatus,priceFilter,category])
@@ -38,8 +41,8 @@ const Restaurants: FC<TitleProps> = ({openStatus, priceFilter, category }) => {
   return (
     <>
       <AllRestaurants>All Restaurants</AllRestaurants>
-      <RestaurantWrapper>
-        {!restaurantLoading ? (restaurants.length ? restaurants.map(event => <RestaurantData data={event} />) : <h3> No Restaurants Found</h3>) : [...Array(8)].map(
+      <RestaurantWrapper isMobile={isMobile}>
+        {!restaurantLoading ? (restaurants.length ? restaurants.map(event => <RestaurantData data={event} isMobile={isMobile}/>) : <h3> No Restaurants Found</h3>) : [...Array(8)].map(
           () => <RestaurantDataLoader />)}
       </RestaurantWrapper>
       <LoadMoreWrapper><LoadMoreButton onClick={() => loadMoreRestaurants()}>{!loading ? 'LOAD MORE' : <p className="loader" />}</LoadMoreButton></LoadMoreWrapper>

@@ -1,14 +1,14 @@
 import styled from 'styled-components'
 
 export const RestaurantImage = styled.img`
-  height: 228px;
-  width:304px;
+  height: ${props => props.height};
+  width: ${props=> props.width};
 `;
 
 export const RestaurantName = styled.p`
   color: #000000;
-  font-size: 20px;
-  line-height: 28px;
+  font-size: ${props=>props.fontSize ? props.fontSize : '20px'};
+  line-height: ${props=>props.fontSize ? props.fontSize+'8px' : '26px'};
   letter-spacing: 1px;
   font-weight: 500;
   margin: 16px 0 8px 0;
@@ -45,4 +45,10 @@ export const ButtonText = styled.p`
     font-size: 14px;
     line-height: 16px;
     letter-spacing: 1px;
+`
+
+export const LearnMoreButton = styled.p`
+  font-size: 26px;
+  color: #002B56;
+  
 `
